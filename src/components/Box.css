@@ -1,0 +1,44 @@
+.boxColor {
+  border-radius: 10px;
+  width: 200px;
+  height: 200px;
+  border: 5px solid antiquewhite;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.textField {
+  border: 3px solid antiquewhite;
+  border-radius: 7px;
+  padding: 5px;
+  background-color: antiquewhite;
+}
+.containerStyle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.boxInput {
+  border-radius: 10px;
+  width: 200px;
+  height: 200px;
+  border: 5px solid antiquewhite;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.containerMain {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.input {
+  text-align: center;
+  border-radius: 3px;
+  border: 0px solid antiquewhite;
+}
