@@ -49,19 +49,6 @@ export default function Box() {
         );
     }
 
-    // Edit existing color ->
-    function handleEdit(event, colorToBeEdited) {
-        console.log(event.target.innerHTML);
-        /*
-         setColors(
-             colors.map((color)=>{
-             })
-
-         )
-
-         */
-    }
-
     function clearOnFocus(event) {
         console.log("ON FOCUS");
         event.target.value = "";
@@ -73,7 +60,6 @@ export default function Box() {
         console.log("ON FOCUS OUT: " + inputValue);
         event.target.value = inputValue;
         setInputValue(inputValue);
-
     }
 
     function toggleInputVisibility(id) {
@@ -191,11 +177,14 @@ export default function Box() {
                                 className="hexTextField"
                                 onClick={(event) => {
                                     event.stopPropagation();
-                                    handleEdit(event, color);
+                                    toggleInputVisibility(color.id);
                                 }}>
                                 {color.hex}
                                 {/* Invisible Input Field ----------> */}
                                 <input
+                                    onBlur={(event)=>{
+                                        toggleInputVisibility(color.id);
+                                    }}
                                     onKeyDown={(event) => {
                                         if (event.key === "Enter") {
                                             unFocus(color.id);
