@@ -27,6 +27,8 @@
 
 .hexTextField {
     position:relative;
+    width:90px;
+    text-align:center;
     border: 3px solid white;
     border-radius: 7px;
     padding: 1px 6px 1px 6px;
@@ -36,11 +38,11 @@
 .invisibleInput{
     position:absolute;
     font-size:15px;
-    right:1px;
-    top:0px;
+    right:8px;
+    top:0;
     width:70px;
-    height:25px;
-    border: 0px solid white;
+    height:23px;
+    border: 0 solid white;
     border-radius: 7px;
     padding: 1px 6px 1px 6px;
     background-color: white;
@@ -107,7 +109,7 @@
 }
 
 .submitButton {
-    border: 0px solid #cccccc;
+    border: 0 solid #cccccc;
     background-color: var(--color-primary);
     border-radius: var(--card-border-radius);
     width: 140px;
