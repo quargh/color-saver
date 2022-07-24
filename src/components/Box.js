@@ -1,14 +1,12 @@
 import "./Box.css";
 import {nanoid} from 'nanoid';
 import closeBox from "../images/close-box.png";
+import editBox from "../images/pencil-box-outline.png";
 import {useState} from "react";
 
 export default function Box() {
 
     //console.clear();
-
-    const hexSelector = document.querySelector('[data-js="hexSelector"]');
-    const hexInput = document.querySelector('[data-js="hexInput"]');
 
     const [colors, setColors] = useState([
         {
@@ -64,17 +62,40 @@ export default function Box() {
          */
     }
 
-    function clearOnFocus(event){
+    function clearOnFocus(event) {
         console.log("ON FOCUS");
         event.target.value = "";
         //alert (event.target.value);
         //setInputValue("");
     }
-    function insertOnBlur(event){
-        console.log("ON FOCUS OUT: "+inputValue);
+
+    function insertOnBlur(event) {
+        console.log("ON FOCUS OUT: " + inputValue);
         event.target.value = inputValue;
         setInputValue(inputValue);
 
+    }
+
+    function toggleInputVisibility(id) {
+        // -- get input field
+        const element = document.getElementById(id);
+        const invisibleInputField = element.querySelector('[data-js="invisibleInputField"]');
+
+        console.log(invisibleInputField.style.display)
+        if (invisibleInputField.style.display === "block") {
+            invisibleInputField.style.display = "none";
+        } else {
+            invisibleInputField.style.display = "block";
+            invisibleInputField.value="";
+            invisibleInputField.focus();
+        }
+    }
+
+    function unFocus(id){
+        const element = document.getElementById(id);
+        const invisibleInputField = element.querySelector('[data-js="invisibleInputField"]');
+        invisibleInputField.blur();
+        invisibleInputField.style.display = "none";
     }
 
 
@@ -123,11 +144,18 @@ export default function Box() {
                 </div>
             </div>
             {/* End of Input Form Box ----------------- > */}
+            {/* ---------------------------------------- >*/}
+            {/* ---------------------------------------- >*/}
+            {/* ---------------------------------------- >*/}
+            {/* ---------------------------------------- >*/}
+            {/* ---------------------------------------- >*/}
             {/* Color Boxes ---------------------------- >*/}
             <div className="containerStyle">
                 {colors.map((color) => {
                     return (
                         <div
+                            key={color.id}
+                            id={color.id}
                             className="colorBox"
                             style={{backgroundColor: color.hex}}
                             onClick={() => {
@@ -147,6 +175,18 @@ export default function Box() {
                                     handleClose(color);
                                 }}
                             />
+                            <img
+                                src={editBox}
+                                alt={"edit"}
+                                width={30}
+                                height={30}
+                                className={"editBox"}
+                                onClick={(event) => {
+                                    event.stopPropagation();
+                                    toggleInputVisibility(color.id);
+                                }}
+                            />
+
                             <div
                                 className="hexTextField"
                                 onClick={(event) => {
@@ -154,6 +194,28 @@ export default function Box() {
                                     handleEdit(event, color);
                                 }}>
                                 {color.hex}
+                                {/* Invisible Input Field ----------> */}
+                                <input
+                                    onKeyDown={(event) => {
+                                        if (event.key === "Enter") {
+                                            unFocus(color.id);
+                                            console.log("Enter pressed: " + event.target.value);
+                                            //TODO Update Color Array with new Hex
+                                            setColors(
+                                                colors.map((arrayColor) => {
+                                                    return arrayColor.id === color.id ? {
+                                                        ...arrayColor,
+                                                        hex: event.target.value
+                                                    } : arrayColor;
+                                                })
+                                            )
+                                        }
+                                    }}
+                                    type="text"
+                                    data-js={"invisibleInputField"}
+                                    className="invisibleInput"
+
+                                />
                             </div>
                         </div>
                     );

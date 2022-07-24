@@ -18,12 +18,35 @@
     top: 10px;
 }
 
+.editBox {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+}
+
 .hexTextField {
+    position:relative;
     border: 3px solid white;
     border-radius: 7px;
     padding: 1px 6px 1px 6px;
     background-color: white;
     box-shadow: 0 0 4px var(--color-primary);
+}
+.invisibleInput{
+    position:absolute;
+    font-size:15px;
+    right:1px;
+    top:0px;
+    width:70px;
+    height:25px;
+    border: 0px solid white;
+    border-radius: 7px;
+    padding: 1px 6px 1px 6px;
+    background-color: white;
+    text-align:center;
+    outline: none;
+    resize: none;
+    display:none;
 }
 
 .containerStyle {
@@ -62,13 +85,14 @@
     background-color: white;
     text-align: center;
     font-size: 14px;
-    color:  var(--color-primary);
+    color: var(--color-primary);
     width: 140px;
-    height:30px;
+    height: 30px;
     outline: none;
     resize: none;
     box-shadow: 0 0 10px var(--color-primary);
 }
+
 .hexInputField:focus {
     outline: none;
     border: 0 solid var(--color-primary);
