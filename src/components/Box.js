@@ -23,7 +23,7 @@ export default function Box() {
         }
     ]);
 
-    const [inputValue, setInputValue] = useState("#ffffff");
+    const [inputValue, setInputValue] = useState("#000000");
 
     // Synchronize color and text inputs ->
     function handleInputValue(event) {
