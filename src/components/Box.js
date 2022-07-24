@@ -5,79 +5,125 @@ import {useState} from "react";
 
 export default function Box() {
 
+    //console.clear();
+
+    const hexSelector = document.querySelector('[data-js="hexSelector"]');
+    const hexInput = document.querySelector('[data-js="hexInput"]');
 
     const [colors, setColors] = useState([
         {
+            id: nanoid(),
             hex: "#82c91e",
-            name: "beautiful green",
-            id: nanoid(),
         },
         {
+            id: nanoid(),
             hex: "#12b886",
-            name: "green",
-            id: nanoid(),
         },
         {
-            hex: "#18c316",
-            name: "seagreen",
             id: nanoid(),
+            hex: "#18c316",
         }
     ]);
 
-    const [inputValue, setInputValue] = useState("#dd0e72");
+    const [inputValue, setInputValue] = useState("#ffffff");
 
+    // Synchronize color and text inputs ->
     function handleInputValue(event) {
-        //alert("changed InputValue");
         setInputValue(event.target.value);
+
     }
 
-    function handleSubmit() {
-        alert("submit");
+    // Add new color ->
+    function handleSubmit(event) {
+        //alert (event.target.value);
+        event.preventDefault();
+        setColors([...colors, {hex: inputValue, id: nanoid()}]);
+        //hexSelector.style.backgroundColor = '#000000'
+        //setInputValue("");
     }
 
+    // Delete a color ->
     function handleClose(colorToBeDeleted) {
-        //alert("close: " + color.name);
-
         setColors(
             colors.filter((color) => {
                 return color.id !== colorToBeDeleted.id;
             })
         );
+    }
 
+    // Edit existing color ->
+    function handleEdit(event, colorToBeEdited) {
+        console.log(event.target.innerHTML);
+        /*
+         setColors(
+             colors.map((color)=>{
+             })
+
+         )
+
+         */
+    }
+
+    function clearOnFocus(event){
+        console.log("ON FOCUS");
+        event.target.value = "";
+        //alert (event.target.value);
+        //setInputValue("");
+    }
+    function insertOnBlur(event){
+        console.log("ON FOCUS OUT: "+inputValue);
+        event.target.value = inputValue;
+        setInputValue(inputValue);
 
     }
 
-    //Das ist ein Comment
+
     return (
-        //Main Container
+        //Main Container ------------------------------------------------------- >
         <div className="containerMain">
-            {/*Input Form Box*/}
+            {/* Input Form Box ---------------------- > */}
             <div className="containerStyle">
                 <div>
                     <form
                         className="inputBox"
                         aria-labelledby="user"
-                        onSubmit={handleSubmit}
+                        onSubmit={(event) => {
+                            handleSubmit(event);
+
+                        }}
                     >
-                        <h2 id="user">New color</h2>
+                        <h2 id="headline" className={"inputFormHeadline"}>New color</h2>
+                        <div className={"hexSelectorContainer"}>
+                            <input
+                                data-js="hexSelector"
+                                className="hexSelector"
+                                id="colorInput"
+                                type="color"
+                                value={inputValue}
+                                onChange={handleInputValue}/>
+                        </div>
                         <input
-                            id="name"
-                            type="color"
-                            value={inputValue}
-                            onChange={handleInputValue}/>
-                        <input
-                            id="name"
+                            onFocus={(event) => {
+                                clearOnFocus(event);
+                            }}
+                            onBlur={(event) => {
+                                insertOnBlur(event);
+                            }}
+
+                            id="textInput"
                             type="text"
+                            data-js="hexInput"
                             className="hexInputField"
-                            placeholder="Hex Value"
+                            placeholder="enter hex value"
                             value={inputValue}
                             onChange={handleInputValue}
                         />
-                        <button>Add</button>
+                        <button className={"submitButton"}>ADD COLOR</button>
                     </form>
                 </div>
             </div>
-            {/*Color Boxes*/}
+            {/* End of Input Form Box ----------------- > */}
+            {/* Color Boxes ---------------------------- >*/}
             <div className="containerStyle">
                 {colors.map((color) => {
                     return (
@@ -101,13 +147,24 @@ export default function Box() {
                                     handleClose(color);
                                 }}
                             />
-                            <div className="hexTextField">{color.hex}</div>
+                            <div
+                                className="hexTextField"
+                                onClick={(event) => {
+                                    event.stopPropagation();
+                                    handleEdit(event, color);
+                                }}>
+                                {color.hex}
+                            </div>
                         </div>
                     );
                 })}
             </div>
+            {/* End of Color Boxes ---------------------- >*/}
         </div>
+        // End of Main Container --------------------------------------------------- //
     );
 }
+
+
 
 

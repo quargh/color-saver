@@ -1,51 +1,114 @@
+@import "../css/base.css";
+
 .colorBox {
-  border-radius: 10px;
-  width: 200px;
-  height: 200px;
-  border: 5px solid antiquewhite;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  position: relative;
-}
-.closeBox{
-  position:absolute;
-  right:10px;
-  top:10px;
-}
-.hexTextField {
-  border: 3px solid antiquewhite;
-  border-radius: 7px;
-  padding: 5px;
-  background-color: antiquewhite;
-}
-.containerStyle {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-.inputBox {
-  border-radius: 10px;
-  width: 200px;
-  height: 200px;
-  border: 5px solid antiquewhite;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
-.containerMain {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-.hexInputField {
-  text-align: center;
-  border-radius: 2px;
-  border: 0 solid antiquewhite;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    border: 5px solid var(--color-primary-lite);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
 }
 
+.closeBox {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.hexTextField {
+    border: 3px solid white;
+    border-radius: 7px;
+    padding: 1px 6px 1px 6px;
+    background-color: white;
+    box-shadow: 0 0 4px var(--color-primary);
+}
+
+.containerStyle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.inputBox {
+    background-color: var(--color-primary-lite);
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    border: 5px solid var(--color-primary-lite);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px;
+}
+
+.containerMain {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.hexInputField {
+    border: 0 solid #aaaaaa;
+    border-radius: var(--card-border-radius);
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    font-size: 14px;
+    color:  var(--color-primary);
+    width: 140px;
+    height:30px;
+    outline: none;
+    resize: none;
+    box-shadow: 0 0 10px var(--color-primary);
+}
+.hexInputField:focus {
+    outline: none;
+    border: 0 solid var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+.inputFormHeadline {
+    color: var(--color-primary);
+    margin: 8px;
+    font-size: 28px;
+}
+
+.submitButton {
+    border: 0px solid #cccccc;
+    background-color: var(--color-primary);
+    border-radius: var(--card-border-radius);
+    width: 140px;
+    font-size: 12px;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    height: 30px;
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+.hexSelector {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 156px;
+    height: 46px;
+    border: none;
+}
+
+.hexSelectorContainer {
+    position: relative;
+    overflow: hidden;
+    width: 140px;
+    height: 30px;
+    border: solid 0 var(--color-primary);
+    border-radius: var(--card-border-radius);
+    box-shadow: 0 0 8px var(--color-primary);
+}

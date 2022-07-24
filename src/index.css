@@ -1,3 +1,4 @@
+@import "./css/base.css";
 * {
   box-sizing: border-box;
 }
@@ -9,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(11, 46, 59, 0.658);
+  background-color: var(--color-primary);
 }
 
 code {

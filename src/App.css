@@ -1,4 +1,6 @@
 .app__headline--highlight {
-  background-color: antiquewhite;
+
   text-align: center;
+  color:#cccccc;
+  font-size: 50px;
 }
