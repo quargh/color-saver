@@ -35,7 +35,7 @@ export default function Box() {
     function handleSubmit(event) {
         //alert (event.target.value);
         event.preventDefault();
-        setColors([...colors, {hex: inputValue, id: nanoid()}]);
+        setColors([{hex: inputValue, id: nanoid()}, ...colors]);
         //hexSelector.style.backgroundColor = '#000000'
         //setInputValue("");
     }
